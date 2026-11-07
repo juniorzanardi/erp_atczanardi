@@ -18,6 +18,11 @@ ini_set('display_errors', $producao ? '0' : '1');
 ini_set('log_errors', '1');
 ini_set('error_log', ERP_ROOT . '/storage/logs/php-error.log');
 
+// Scripts de linha de comando (bin/) não usam domínio, sessão nem cookies.
+if (PHP_SAPI === 'cli') {
+    return;
+}
+
 // Em produção, só atende pelo domínio oficial (o de redirecionamento nunca cria sessão).
 if ($producao && ($_SERVER['HTTP_HOST'] ?? '') !== env('APP_HOST')) {
     header('Location: ' . rtrim((string) env('APP_URL'), '/') . ($_SERVER['REQUEST_URI'] ?? '/'), true, 301);

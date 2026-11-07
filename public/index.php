@@ -16,6 +16,9 @@ $u = exigir_login();
 <body>
 <main class="painel">
     <h1>Olá, <?= e(explode(' ', (string) $u['nome'])[0]) ?></h1>
+    <?php if ($u['tipo_conta'] === 'equipe_atc'): ?>
+        <p><strong>Equipe ATC Zanardi</strong> · perfil <?= e(str_replace('_', ' ', (string) $u['perfil_equipe'])) ?></p>
+    <?php endif; ?>
     <p>Login concluído. A escolha da empresa e o painel financeiro vêm nas próximas etapas.</p>
 
     <form method="post" action="/logout.php">
