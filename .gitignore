@@ -1,0 +1,15 @@
+# Credenciais (nunca versionar)
+.env
+.env.*
+!.env.example
+
+# Logs e arquivos gerados
+storage/logs/*
+!storage/logs/.gitkeep
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
