@@ -1,0 +1,9 @@
+# public_html/erp fica dentro do site principal.
+# Bloqueia qualquer acesso que não venha pelo subdomínio do ERP (ex.: www.../erp/.env).
+<If "%{HTTP_HOST} != 'erp.atczanardicontabilidade.com.br'">
+    Require all denied
+</If>
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+Options -Indexes

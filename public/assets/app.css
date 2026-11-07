@@ -1,0 +1,133 @@
+/* Visual provisório: será trocado pela identidade oficial do app ATC Zanardi. */
+:root {
+    --fundo: #eef1f4;
+    --superficie: #ffffff;
+    --texto: #1c2733;
+    --texto-suave: #5b6876;
+    --borda: #c9d1da;
+    --primaria: #1f4e5f;
+    --primaria-texto: #ffffff;
+    --foco: #3b82c4;
+    --erro-fundo: #fdecec;
+    --erro-texto: #9b1c1c;
+    color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fundo: #12181f;
+        --superficie: #1b232c;
+        --texto: #e6ebf0;
+        --texto-suave: #9aa7b4;
+        --borda: #33404d;
+        --primaria: #5fa8bf;
+        --primaria-texto: #0d1a20;
+        --foco: #7fb6e6;
+        --erro-fundo: #3a1d1d;
+        --erro-texto: #f3b4b4;
+        color-scheme: dark;
+    }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--texto);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+             env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+}
+h1 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+
+/* Login */
+.tela-login { display: grid; place-items: center; }
+.login {
+    width: 100%;
+    max-width: 26rem;
+    padding: 2rem 1.25rem;
+}
+.login-cabecalho { margin-bottom: 1.5rem; }
+.login-cabecalho p { margin: .25rem 0 0; color: var(--texto-suave); }
+
+.login-form {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.modo { border: 0; margin: 0; padding: 0; }
+.modo legend { font-weight: 600; margin-bottom: .5rem; padding: 0; }
+.modo-opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.modo-opcoes input { position: absolute; opacity: 0; pointer-events: none; }
+.modo-opcoes label {
+    padding: .7rem .5rem;
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1.25;
+    cursor: pointer;
+    color: var(--texto-suave);
+}
+.modo-opcoes label + input + label { border-left: 1px solid var(--borda); }
+.modo-opcoes input:checked + label {
+    background: var(--primaria);
+    color: var(--primaria-texto);
+    font-weight: 600;
+}
+.modo-opcoes input:focus-visible + label { outline: 3px solid var(--foco); outline-offset: -3px; }
+
+.dica { margin: .5rem 0 0; font-size: .875rem; color: var(--texto-suave); }
+.dica-erp { display: none; }
+.modo:has(#modo-erp:checked) .dica-app { display: none; }
+.modo:has(#modo-erp:checked) .dica-erp { display: block; }
+
+.campo { display: grid; gap: .35rem; }
+.campo span { font-weight: 600; font-size: .95rem; }
+.campo input {
+    font: inherit;
+    font-size: 1rem; /* 16px evita zoom automático no iPhone */
+    padding: .75rem .85rem;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: var(--superficie);
+    color: var(--texto);
+    width: 100%;
+}
+.campo input:focus { outline: 3px solid var(--foco); outline-offset: 1px; border-color: var(--foco); }
+
+.alerta {
+    margin: 0;
+    padding: .75rem .85rem;
+    border-radius: 8px;
+    background: var(--erro-fundo);
+    color: var(--erro-texto);
+    font-size: .95rem;
+}
+
+.botao-principal, .botao-secundario {
+    font: inherit;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: .85rem 1rem;
+    min-height: 48px;
+    cursor: pointer;
+}
+.botao-principal { border: 0; background: var(--primaria); color: var(--primaria-texto); width: 100%; }
+.botao-secundario { border: 1px solid var(--borda); background: var(--superficie); color: var(--texto); }
+.botao-principal:focus-visible, .botao-secundario:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+
+.rodape-login { margin-top: 1.25rem; font-size: .875rem; color: var(--texto-suave); text-align: center; }
+
+/* Painel provisório */
+.painel { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; display: grid; gap: 1rem; justify-items: start; }
+.painel p { margin: 0; color: var(--texto-suave); }
